@@ -59,8 +59,6 @@ const Modal = (props: ModalProps) => {
         };
     }, [isOpen, onKeyDown]);
 
-    console.log(theme);
-
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
@@ -68,7 +66,7 @@ const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div className={classNames(cls.modal, mods, [className, theme, 'modal-theme'])}>
+            <div className={classNames(cls.modal, mods, [className, theme])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}
