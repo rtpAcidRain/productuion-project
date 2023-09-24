@@ -9,7 +9,6 @@ import Modal from 'shared/ui/Modal/Modal';
 function App() {
     const { theme } = useTheme();
 
-    console.log(theme);
     return (
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
