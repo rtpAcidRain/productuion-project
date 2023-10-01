@@ -10,6 +10,8 @@
     " Architecto cum exercitationem incidunt magnam maxime odit recusandae rem sint veniam voluptate?  Debitis eaque facilis itaque laborum, minima quia reprehenderit temporibus ut?": " Architecto cum exercitationem incidunt magnam maxime odit recusandae rem sint veniam voluptate?  Debitis eaque facilis itaque laborum, minima quia reprehenderit temporibus ut?"
   },
   "toggle": "toggle",
+  "Ваша фамилия": "Ваша фамилия",
+  "Ваше имя": "Ваше имя",
   "Введите username": "Введите username",
   "Введите пароль": "Введите пароль",
   "Войти": "Войти",
@@ -24,6 +26,7 @@
   "Переключить": "Переключить",
   "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка",
   "Профиль": "Профиль",
+  "Редактировать": "Редактировать",
   "Страница не найдена": "Страница не найдена",
   "Страница профиля": "Страница профиля",
   "Форма авторизации": "Форма авторизации",
