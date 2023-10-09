@@ -3,18 +3,24 @@
     border: 2px solid var(--inverted-bg-color);
 }
 
-.header {
+.input:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.loading,
+.error {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
 }
 
-.editBtn {
-    margin-left: auto;
+.avatarWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
-.data {
-    margin-top: 30px;
-}
-
-.input {
-    margin-top: 10px;
+.editing {
+    border-color: var(--inverted-primary-color);
 }
