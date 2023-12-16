@@ -7,7 +7,6 @@ const MainPage = memo(() => {
     return (
         <div>
             {t('Главная страница')}
-
         </div>
     );
 });
