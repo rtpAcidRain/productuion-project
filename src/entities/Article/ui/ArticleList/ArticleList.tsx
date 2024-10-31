@@ -31,6 +31,7 @@ export const ArticleList = memo(
                         new Array(view === ArticleVew.SMALL ? 9 : 3)
                             .fill(0)
                             .map((_, index) => (
+                                // eslint-disable-next-line
                                 <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
                             ))
                     }
