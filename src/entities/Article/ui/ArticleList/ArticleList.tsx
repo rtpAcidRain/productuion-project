@@ -24,21 +24,6 @@ export const ArticleList = memo(
 
         const { t } = useTranslation();
 
-        if (isLoading) {
-            return (
-                <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-                    {
-                        new Array(view === ArticleVew.SMALL ? 9 : 3)
-                            .fill(0)
-                            .map((_, index) => (
-                                // eslint-disable-next-line
-                                <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
-                            ))
-                    }
-                </div>
-            );
-        }
-
         function renterArticle(article: Article) {
             return (
                 <ArticleListItem
@@ -56,6 +41,21 @@ export const ArticleList = memo(
                     articles.length > 0
                         ? articles.map(renterArticle)
                         : null
+                }
+                {
+                    isLoading
+                    && (
+                        <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+                            {
+                                new Array(view === ArticleVew.SMALL ? 9 : 3)
+                                    .fill(0)
+                                    .map((_, index) => (
+                                        // eslint-disable-next-line
+                                <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
+                                    ))
+                            }
+                        </div>
+                    )
                 }
             </div>
         );
