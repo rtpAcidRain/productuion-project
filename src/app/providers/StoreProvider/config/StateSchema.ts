@@ -1,22 +1,21 @@
-import { CounterSchema } from 'entities/Counter';
-import { UserSchema } from 'entities/User';
-import { LoginSchema } from 'features/AuthByUsername';
 import {
     AnyAction, CombinedState, Dispatch, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { ProfileSchema } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
-import { To } from '@remix-run/router';
-import { NavigateOptions } from 'react-router/dist/lib/context';
 import { ArticleDetailsSchema } from 'entities/Article';
-import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
+import { CounterSchema } from 'entities/Counter';
+import { ProfileSchema } from 'entities/Profile';
+import { UserSchema } from 'entities/User';
 import { AddNewCommentSchema } from 'features/AddNewComment';
+import { LoginSchema } from 'features/AuthByUsername';
+import { UISchema } from 'features/UI';
+import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema,
-
+    ui: UISchema
     // Async reducer
     loginForm?: LoginSchema
     profile?: ProfileSchema

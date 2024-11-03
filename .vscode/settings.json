@@ -7,5 +7,7 @@
     "files.associations": {
         "**/.fttemplates/**": "plaintext"
     },
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "javascript.experimental.updateImportsOnPaste": true,
+    "typescript.experimental.updateImportsOnPaste": true
 }
