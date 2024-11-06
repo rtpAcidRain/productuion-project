@@ -1,5 +1,5 @@
 import {
-    ArticleList, ArticleVew, ArticleViewToggler,
+    ArticleList,
 } from 'entities/Article';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { memo, useCallback } from 'react';
@@ -10,13 +10,17 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
+import { useSearchParams } from 'react-router-dom';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
+import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
+import { ArticlesPageFilter } from '../ArticlesPageFilter/ArticlesPageFilter';
+
+import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
     className?: string,
@@ -34,10 +38,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
-
-    const onChangeView = useCallback((view: ArticleVew) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
+    const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
@@ -47,7 +48,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch, error]);
 
     useInitialEffects(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
 
     return (
@@ -56,8 +57,9 @@ const ArticlesPage = (props: ArticlesPageProps) => {
                 onScrollEnd={onLoadNextPart}
                 className={classNames('', {}, [className])}
             >
-                <ArticleViewToggler view={view} onViewClick={onChangeView} />
+                <ArticlesPageFilter view={view} />
                 <ArticleList
+                    className={cls.ArticleList}
                     isLoading={isLoading}
                     view={view}
                     articles={

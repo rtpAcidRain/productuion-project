@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ArticleViewToggler } from './ArticleViewToggler';
 
 export default {
-    title: 'shared/ArticleViewToggler',
+    title: 'entities/Article/ArticleViewToggler',
     component: ArticleViewToggler,
     argTypes: {
         backgroundColor: { control: 'color' },
