@@ -1,30 +1,38 @@
-import { memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleDetails } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Text } from 'shared/ui/Text/Text';
+import { ArticleDetails, ArticleList } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
-import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddNewComment } from 'features/AddNewComment';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page/Page';
-import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
-import { fetchCommentsByArticleId } from '../../model/services/fetchCommentByArticleId/fetchCommentByArticleId';
-import { articleDetailsCommentReducer, getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
-import cls from './ArticleDetailsPage.module.scss';
+import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { getArticleRecomendationsIsLoading } from '../../model/selectors/recommendations';
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
+import {
+    fetchRecomendationsList,
+} from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentByArticleId/fetchCommentByArticleId';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
+import {
+    getArticlePageRecommendations,
+} from '../../model/slices/articleDetailsPageRecommendationsSlice';
+import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticleDetailsPageProps {
     className?: string,
 }
 
 const reducers: ReducerList = {
-    articleDetailsComments: articleDetailsCommentReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
@@ -33,7 +41,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { id } = useParams<{id: string}>();
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
+    const recomendations = useSelector(getArticlePageRecommendations.selectAll);
     const commentsIsloading = useSelector(getArticleCommentsIsLoading);
+    const recomendationsIsloading = useSelector(getArticleRecomendationsIsLoading);
     const navigate = useNavigate();
     const onBackToList = useCallback(() => {
         navigate(RoutePath.article_details);
@@ -45,6 +55,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     useInitialEffects(() => {
         dispatch(fetchCommentsByArticleId(id));
+        dispatch(fetchRecomendationsList());
     });
 
     if (!id) {
@@ -62,11 +73,18 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     {t('Назад к списку')}
                 </Button>
                 <ArticleDetails id={id} />
-                <Text title={t('Комментарии')} className={cls.commentTitle} />
+                <Text size={TextSize.L} title={t('Комментарии')} className={cls.commentTitle} />
                 <AddNewComment onSendComment={onSendComment} />
                 <CommentList
                     isLoading={commentsIsloading}
                     comments={comments}
+                />
+                <Text size={TextSize.L} title={t('Другие статьи')} className={cls.commentTitle} />
+                <ArticleList
+                    articles={recomendations}
+                    isLoading={recomendationsIsloading}
+                    className={cls.recomendations}
+                    // target="_blank"
                 />
             </Page>
         </DynamicModuleLoader>

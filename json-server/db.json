@@ -429,7 +429,8 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "IT",
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -453,7 +454,8 @@
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "IT",
+        "ECONOMICS"
       ],
       "blocks": [
         {
@@ -591,6 +593,18 @@
       "userId": "1",
       "text": "kuku ebat",
       "id": "szChzvB"
+    },
+    {
+      "articleId": "7",
+      "userId": "1",
+      "text": "adasdad",
+      "id": "8KxEw0b"
+    },
+    {
+      "articleId": "4",
+      "userId": "1",
+      "text": "dadasd",
+      "id": "TH9hmQK"
     }
   ],
   "users": [
