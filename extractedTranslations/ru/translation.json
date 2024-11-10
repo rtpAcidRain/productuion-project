@@ -7,8 +7,10 @@
       }
     }
   },
+  "Acid App": "Acid App",
   "ArticleDetails": "ArticleDetails",
   "ArticleDetailsPage": "ArticleDetailsPage",
+  "ArticleEditPage": "ArticleEditPage",
   "ArticleList": "ArticleList",
   "ArticlesPage": "ArticlesPage",
   "Error": "Error",
@@ -75,6 +77,7 @@
   "Просмотрам": "Просмотрам",
   "Профиль": "Профиль",
   "Редактировать": "Редактировать",
+  "Создать статью": "Создать статью",
   "Сортировать по": {
     "": {
       "": {

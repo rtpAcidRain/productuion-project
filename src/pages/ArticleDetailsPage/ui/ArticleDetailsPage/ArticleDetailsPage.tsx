@@ -26,6 +26,7 @@ import {
     getArticlePageRecommendations,
 } from '../../model/slices/articleDetailsPageRecommendationsSlice';
 import cls from './ArticleDetailsPage.module.scss';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
     className?: string,
@@ -44,10 +45,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const recomendations = useSelector(getArticlePageRecommendations.selectAll);
     const commentsIsloading = useSelector(getArticleCommentsIsLoading);
     const recomendationsIsloading = useSelector(getArticleRecomendationsIsLoading);
-    const navigate = useNavigate();
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath.article_details);
-    }, [navigate]);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -69,9 +66,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-                    {t('Назад к списку')}
-                </Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <Text size={TextSize.L} title={t('Комментарии')} className={cls.commentTitle} />
                 <AddNewComment onSendComment={onSendComment} />
@@ -84,7 +79,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     articles={recomendations}
                     isLoading={recomendationsIsloading}
                     className={cls.recomendations}
-                    // target="_blank"
+                    target="_blank"
                 />
             </Page>
         </DynamicModuleLoader>
