@@ -5,7 +5,11 @@
 }
 
 .SMALL {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+
+    &.grid,
+    :global(.virtuoso-grid-list) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
 }

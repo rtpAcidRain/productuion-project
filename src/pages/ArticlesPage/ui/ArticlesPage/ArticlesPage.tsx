@@ -2,7 +2,9 @@ import {
     ArticleList,
 } from 'entities/Article';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { memo, useCallback } from 'react';
+import {
+    MutableRefObject, memo, useCallback, useRef,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -39,6 +41,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
     const [searchParams] = useSearchParams();
+    const pageWrapperRef = useRef() as MutableRefObject<HTMLElement>;
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
@@ -53,20 +56,25 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-            <Page
-                onScrollEnd={onLoadNextPart}
-                className={classNames('', {}, [className])}
-            >
-                <ArticlesPageFilter view={view} />
-                <ArticleList
-                    className={cls.ArticleList}
-                    isLoading={isLoading}
-                    view={view}
-                    articles={
-                        articles
-                    }
-                />
-            </Page>
+            <div>
+                <Page
+                    innerRef={pageWrapperRef}
+                    className={classNames('', {}, [className])}
+                >
+                    <ArticlesPageFilter view={view} />
+                    <ArticleList
+                        className={cls.ArticleList}
+                        isLoading={isLoading}
+                        view={view}
+                        articles={
+                            articles
+                        }
+                        isNormalazed
+                        endReached={onLoadNextPart}
+                        scrollElement={pageWrapperRef.current}
+                    />
+                </Page>
+            </div>
         </DynamicModuleLoader>
 
     );
