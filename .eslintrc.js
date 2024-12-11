@@ -17,7 +17,8 @@ module.exports = {
         'react',
         '@typescript-eslint',
         'i18next',
-        'eslint-plugin-react-hooks',
+        'react-hooks',
+        'acid-plugin2',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -51,6 +52,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'no-array-index-key': 'off',
+        'acid-plugin2/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

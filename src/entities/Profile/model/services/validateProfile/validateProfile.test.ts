@@ -1,7 +1,7 @@
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ValidateProfileError } from 'entities/Profile';
 import { validateProfile } from './validateProfile';
+import { ValidateProfileError } from '../../types/profile';
 
 const data = {
     username: 'admin',
@@ -45,7 +45,7 @@ describe('validateProfile.test', () => {
     });
 
     test('incorrect all', async () => {
-        const result = validateProfile({ });
+        const result = validateProfile({});
 
         expect(result).toEqual([
             ValidateProfileError.INCORRECT_USER_DATA,

@@ -14,5 +14,4 @@ const Template: ComponentStory<typeof ArticleDetailsPageHeader> = (args) => <Art
 
 export const Primary = Template.bind({});
 Primary.args = {
-   
 };

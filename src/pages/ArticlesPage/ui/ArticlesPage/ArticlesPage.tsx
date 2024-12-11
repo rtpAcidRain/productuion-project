@@ -1,7 +1,6 @@
 import {
     ArticleList,
 } from 'entities/Article';
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
     MutableRefObject, memo, useCallback, useRef,
 } from 'react';
@@ -13,6 +12,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Page } from 'widgets/Page/Page';
 import { useSearchParams } from 'react-router-dom';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
