@@ -6,6 +6,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { HStack } from 'shared/ui/Stack';
 import { addNewCommentActions, addNewCommentReducer } from '../../model/slices/addNewCommentSlice';
 import { getAddNewCommentText, getAddNewCommentError } from '../../model/selectors/addNewCommentSelectors';
 import cls from './AddNewComment.module.scss';
@@ -40,7 +41,7 @@ const AddNewComment = memo(
 
         return (
             <DynamicModuleLoader reducers={reducers}>
-                <div className={classNames(cls.AddNewComment, {}, [className])}>
+                <HStack justify="between" className={classNames(cls.AddNewComment, {}, [className])}>
                     <Input
                         className={cls.input}
                         placeholder={t('vvedite-tekst-kommentariya')}
@@ -48,7 +49,7 @@ const AddNewComment = memo(
                         onChange={onCommentTextChange}
                     />
                     <Button theme={ButtonTheme.OUTLINE} onClick={onSendHandler}>{t('otpravit')}</Button>
-                </div>
+                </HStack>
             </DynamicModuleLoader>
         );
     },

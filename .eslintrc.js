@@ -42,7 +42,21 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['data-testid', 'to', 'href', 'name', 'target'] },
+            {
+                markupOnly: true,
+                ignoreAttribute:
+                    [
+                        'data-testid',
+                        'to',
+                        'href',
+                        'name',
+                        'target',
+                        'justify',
+                        'align',
+                        'direction',
+                        'gap',
+                    ],
+            },
         ],
         'max-len': ['warn', { ignoreComments: true, code: 120 }],
         'jsx-a11y/no-static-element-interactions': 'off',

@@ -13,6 +13,7 @@ import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialE
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { getArticleRecomendationsIsLoading } from '../../model/selectors/recommendations';
@@ -68,12 +69,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
-                <Text size={TextSize.L} title={t('Комментарии')} className={cls.commentTitle} />
-                <AddNewComment onSendComment={onSendComment} />
-                <CommentList
-                    isLoading={commentsIsloading}
-                    comments={comments}
-                />
                 <Text size={TextSize.L} title={t('Другие статьи')} className={cls.commentTitle} />
                 <ArticleList
                     articles={recomendations}
@@ -81,6 +76,14 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     className={cls.recomendations}
                     target="_blank"
                 />
+                <Text size={TextSize.L} title={t('Комментарии')} className={cls.commentTitle} />
+                <VStack gap="32">
+                    <AddNewComment onSendComment={onSendComment} />
+                    <CommentList
+                        isLoading={commentsIsloading}
+                        comments={comments}
+                    />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );
