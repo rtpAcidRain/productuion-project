@@ -122,18 +122,24 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 onChange={onChangeCity}
                 readonly={readonly}
             />
-            <CountrySelect
-                className={cls.input}
-                value={data?.country}
-                onChange={onChangeCountry}
-                readonly={readonly}
-            />
-            <CurrencySelect
-                className={cls.input}
-                value={data?.currency}
-                onChange={onChangeCurrency}
-                readonly={readonly}
-            />
+            <HStack gap="8">
+                {'Валюта> '}
+                <CountrySelect
+                    className={cls.input}
+                    value={data?.country}
+                    onChange={onChangeCountry}
+                    readonly={readonly}
+                />
+            </HStack>
+            <HStack gap="8">
+                {'Страна> '}
+                <CurrencySelect
+                    className={cls.input}
+                    value={data?.currency}
+                    onChange={onChangeCurrency}
+                    readonly={readonly}
+                />
+            </HStack>
         </VStack>
     );
 };
