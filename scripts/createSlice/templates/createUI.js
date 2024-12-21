@@ -4,6 +4,7 @@ const firstCharUpperCase = require('../firstCharUpperCase');
 const componentTemplate = require('./componentTemplate');
 const storyTemplate = require('./storyTemplate');
 const styleTemplate = require('./styleTemplate');
+const asyncFileForPageTemplate = require('./asyncFileForPageTemplate');
 
 module.exports = async (layer, sliceName) => {
     const resolveUIPath = (...segments) => resolveRoot('src', layer, sliceName, 'ui', ...segments);
@@ -32,8 +33,14 @@ module.exports = async (layer, sliceName) => {
                 resolveUIPath(componentName, `${componentName}.module.scss`),
                 styleTemplate(componentName),
             );
+            if (layer === 'pages') {
+                await fs.writeFile(
+                    resolveUIPath(componentName, `${componentName}.async.tsx`),
+                    asyncFileForPageTemplate(componentName),
+                );
+            }
         } catch (e) {
-            console.log('Не удалось создать компонент');
+            console.log('Не удалось создать компонент', e);
         }
     };
 
