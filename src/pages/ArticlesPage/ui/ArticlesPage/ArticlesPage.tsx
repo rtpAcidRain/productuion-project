@@ -6,6 +6,10 @@ import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from 'widgets/Page/Page';
+import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSearchParams } from 'react-router-dom';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import {
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
@@ -27,6 +31,12 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const { className } = props;
     const view = useSelector(getArticlesPageView);
     const pageWrapperRef = useRef() as MutableRefObject<HTMLElement>;
+    const [searchParams] = useSearchParams();
+    const dispatch = useAppDispatch();
+
+    useInitialEffects(() => {
+        dispatch(initArticlesPage(searchParams));
+    });
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>

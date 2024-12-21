@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { getArticlesPageError, getArticlesPageIsLoading } from '../../model/selectors/articlesPageSelectors';
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { getArticles } from '../../model/slice/articlesPageSlice';
 
 interface ArticleInfiniteListProps {
@@ -28,7 +28,6 @@ export const ArticleInfiniteList = memo(
         const articles = useSelector(getArticles.selectAll);
         const isLoading = useSelector(getArticlesPageIsLoading);
         const error = useSelector(getArticlesPageError);
-        const [searchParams] = useSearchParams();
         const dispatch = useAppDispatch();
 
         const onLoadNextPart = useCallback(() => {
@@ -37,10 +36,6 @@ export const ArticleInfiniteList = memo(
                 console.log('Alarm: ', error);
             }
         }, [dispatch, error]);
-
-        // useInitialEffects(() => {
-        //     dispatch(initArticlesPage(searchParams));
-        // });
 
         return (
             <ArticleList
