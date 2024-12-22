@@ -64,14 +64,13 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     if (isLoading) {
         content = (
-            <div>
+            <VStack gap="16">
                 <Sceleton className={cls.avatar} width={200} height={200} border="50%" />
                 <Sceleton className={cls.title} width={300} height={32} />
                 <Sceleton className={cls.sceleton} width={600} height={24} />
                 <Sceleton className={cls.sceleton} width="100%" height={200} />
                 <Sceleton className={cls.sceleton} width="100%" height={200} />
-
-            </div>
+            </VStack>
         );
     }
 

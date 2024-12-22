@@ -39,7 +39,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     });
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div>
                 <Page
                     innerRef={pageWrapperRef}

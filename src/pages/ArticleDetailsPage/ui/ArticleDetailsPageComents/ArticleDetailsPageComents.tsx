@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { Suspense, memo, useCallback } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { VStack } from 'shared/ui/Stack';
 import { AddNewComment } from 'features/AddNewComment';
@@ -37,7 +37,9 @@ export const ArticleDetailsPageComents = memo(
             <VStack gap="16" align="start">
                 <Text size={TextSize.L} title={t('Комментарии')} />
                 <VStack gap="16">
-                    <AddNewComment onSendComment={onSendComment} />
+                    <Suspense fallback={`${t('Loading...')}`}>
+                        <AddNewComment onSendComment={onSendComment} />
+                    </Suspense>
                     <CommentList
                         isLoading={commentsIsloading}
                         comments={comments}

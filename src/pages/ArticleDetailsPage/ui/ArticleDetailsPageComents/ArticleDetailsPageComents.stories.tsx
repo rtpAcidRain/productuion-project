@@ -1,9 +1,9 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ArticleDetailsPageComents } from './ArticleDetailsPageComents';
 
 export default {
-    title: 'shared/ArticleDetailsPageComents',
+    title: 'pages/ArticleDetailsPage/ArticleDetailsPageComents',
     component: ArticleDetailsPageComents,
     argTypes: {
         backgroundColor: { control: 'color' },
@@ -16,3 +16,4 @@ export const Primary = Template.bind({});
 Primary.args = {
 
 };
+Primary.decorators = [StoreDecorator({})];
