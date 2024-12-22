@@ -20,7 +20,7 @@ interface ArticleListItemProps {
     className?: string,
     article: Article,
     view: ArticleVew,
-    target?: HTMLAttributeAnchorTarget
+    target?: HTMLAttributeAnchorTarget,
 }
 
 export const ArticleListItem = memo(
