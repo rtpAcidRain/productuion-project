@@ -1,2 +1,2 @@
-export { AddNewCommentSchema } from './model/types/AddNewComment';
+export type { AddNewCommentSchema } from './model/types/AddNewComment';
 export { AddNewCommentAsync as AddNewComment } from './ui/AddNewComment/AddNewComment.async';

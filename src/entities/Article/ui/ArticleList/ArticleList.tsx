@@ -4,7 +4,8 @@ import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
 import cls from './ArticleList.module.scss';
-import { Article, ArticleVew } from '../../model/types/article';
+import { Article } from '../../model/types/article';
+import { ArticleVew } from '../../model/consts/articleConsts';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 

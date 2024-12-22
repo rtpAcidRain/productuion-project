@@ -18,8 +18,8 @@ import { getProfileValidateErrors } from '../../model/selectors/getProfileValida
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../model/slice/ProfileSlice';
-import { ValidateProfileError } from '../../model/types/editableProfileCardSchema';
 import { EditableProfileHeader } from '../EditableProfileHeader/EditableProfileHeader';
+import { ValidateProfileError } from '../../model/consts/ValidateProfileError';
 
 const reducers: ReducerList = {
     profile: profileReducer,
