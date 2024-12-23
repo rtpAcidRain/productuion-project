@@ -13,6 +13,7 @@
   "ArticleEditPage": "ArticleEditPage",
   "ArticleList": "ArticleList",
   "ArticlesPage": "ArticlesPage",
+  "AvatarDropdown": "AvatarDropdown",
   "Error": "Error",
   "HStack": "",
   "IT": "",
@@ -27,6 +28,8 @@
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit": {
     " Architecto cum exercitationem incidunt magnam maxime odit recusandae rem sint veniam voluptate?  Debitis eaque facilis itaque laborum, minima quia reprehenderit temporibus ut?": " Architecto cum exercitationem incidunt magnam maxime odit recusandae rem sint veniam voluptate?  Debitis eaque facilis itaque laborum, minima quia reprehenderit temporibus ut?"
   },
+  "NotificationItem": "NotificationItem",
+  "NotificationPopup": "NotificationPopup",
   "VStack": "",
   "error": "error",
   "otpravit": "otpravit",
@@ -100,6 +103,7 @@
   "Страница не найдена": "Страница не найдена",
   "Страница профиля": "Страница профиля",
   "Убыванию": "Убыванию",
+  "Уведомлений нет": "Уведомлений нет",
   "Форма авторизации": "",
   "Читать далее": {
     "": {

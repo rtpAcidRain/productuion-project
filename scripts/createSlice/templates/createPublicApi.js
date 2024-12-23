@@ -15,7 +15,7 @@ module.exports = async (layer, sliceName) => {
             resolveRoot('src', layer, sliceName, 'index.ts'),
 
             `export ${UiExport};
-             export { ${firstCharUpperCase(schemaName)} } from './model/types/${schemaName}';`,
+             export type { ${firstCharUpperCase(schemaName)} } from './model/types/${schemaName}';`,
         );
     } catch (e) {
         console.log('Не удалось создать PUBLIC API');

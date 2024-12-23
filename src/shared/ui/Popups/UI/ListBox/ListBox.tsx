@@ -1,9 +1,10 @@
-import { Fragment, ReactNode, useState } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
+import { Fragment, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DropdownDirection } from 'shared/types/ui';
+import { Button } from '../../../Button/Button';
 import cls from './ListBox.module.scss';
-import { Button } from '../Button/Button';
+import common from '../../styles/popup.module.scss';
 
 export interface ListBoxItem {
     value: string,
@@ -35,17 +36,17 @@ export const ListBox = (props: ListBoxProps) => {
     return (
         <HListBox
             as="div"
-            className={classNames(cls.ListBox, {}, [className])}
+            className={classNames(common.popup, {}, [className])}
             value={value}
             onChange={onChange}
             disabled={readonly}
         >
-            <HListBox.Button disabled={readonly} className={cls.trigger}>
+            <HListBox.Button disabled={readonly} className={classNames(common.trigger, {}, [cls.trigger])}>
                 <Button disabled={readonly}>
                     {value ?? defaultValue}
                 </Button>
             </HListBox.Button>
-            <HListBox.Options className={classNames(cls.options, {}, [cls[direction]])}>
+            <HListBox.Options className={classNames(common.options, {}, [cls.options, common[direction]])}>
                 {items?.map((item) => (
 
                     <HListBox.Option
@@ -57,11 +58,14 @@ export const ListBox = (props: ListBoxProps) => {
                         {({ active, selected }) => (
                             <li className={
                                 classNames(
-                                    cls.option,
+                                    common.option,
                                     {
-                                        [cls.active]: active,
-                                        [cls.disabled]: item.disabled,
+                                        [common.active]: active,
+                                        [common.disabled]: item.disabled,
                                     },
+                                    [
+                                        cls.option,
+                                    ],
                                 )
                             }
                             >
