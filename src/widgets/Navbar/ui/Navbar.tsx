@@ -13,7 +13,6 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -25,12 +24,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
 
-    const onCloseModal = useCallback(() => {
-        setIsAuthModal(false);
-    }, []);
-
-    const onShowModal = useCallback(() => {
-        setIsAuthModal(true);
+    const onToggleModal = useCallback(() => {
+        setIsAuthModal((prev) => !prev);
     }, []);
 
     if (authData) {
@@ -41,7 +36,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {t('Создать статью')}
                 </AppLink>
                 <HStack gap="16" className={cls.actions} max={false}>
-
                     <NotificationPopup />
                     <AvatarDropdown authData={authData} />
                 </HStack>
@@ -54,14 +48,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <Button
                 theme={ButtonTheme.CLEAR_INVERTED}
                 className={cls.links}
-                onClick={onShowModal}
+                onClick={onToggleModal}
             >
                 {t('Войти')}
             </Button>
             { isAuthModal && (
                 <LoginModal
                     isOpen={isAuthModal}
-                    onClose={onCloseModal}
+                    onClose={onToggleModal}
                 />
             )}
         </header>

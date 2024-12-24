@@ -14,5 +14,5 @@ const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-   
+
 };
