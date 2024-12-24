@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { HTMLAttributeAnchorTarget, memo } from 'react';
-import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Virtuoso, VirtuosoGrid } from 'react-virtuoso';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ArticleList.module.scss';
 import { Article } from '../../model/types/article';
 import { ArticleVew } from '../../model/consts/articleConsts';

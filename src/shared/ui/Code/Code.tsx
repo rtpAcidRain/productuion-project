@@ -1,6 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { ReactNode, memo, useCallback } from 'react';
-import CupyIcon from 'shared/assets/icons/copy-20-20.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import CupyIcon from '@/shared/assets/icons/copy-20-20.svg';
 import { Icon } from '../Icon/Icon';
 import { Button, ButtonTheme } from '../Button/Button';
 import cls from './Code.module.scss';

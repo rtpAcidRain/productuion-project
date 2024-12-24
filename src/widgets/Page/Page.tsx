@@ -1,7 +1,7 @@
 import {
     MutableRefObject, ReactNode, memo,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Page.module.scss';
 
 interface PageProps {

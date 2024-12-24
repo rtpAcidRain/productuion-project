@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next';
 import { Suspense, memo, useCallback } from 'react';
-import { Text, TextSize } from 'shared/ui/Text/Text';
-import { VStack } from 'shared/ui/Stack';
-import { AddNewComment } from 'features/AddNewComment';
-import { CommentList } from 'entities/Comment';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { useInitialEffects } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { VStack } from '@/shared/ui/Stack';
+import { AddNewComment } from '@/features/AddNewComment';
+import { CommentList } from '@/entities/Comment';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffects } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
