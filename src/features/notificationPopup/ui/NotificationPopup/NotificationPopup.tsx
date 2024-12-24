@@ -6,6 +6,7 @@ import { Icon } from 'shared/ui/Icon/Icon';
 import { Popover } from 'shared/ui/Popups';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './NotificationPopup.module.scss';
 
 interface NotificationPopupProps {
@@ -42,7 +43,7 @@ export const NotificationPopup = memo(
                 <MobileView>
                     {trigger}
                     <Drawer isOpen={isDrawerOpen} onClose={toggleDrawer}>
-                        <NotificationList className={cls.notifications} />
+                        <NotificationList className={classNames(cls.notifications, {}, [cls.mobile])} />
                     </Drawer>
                 </MobileView>
             </>
