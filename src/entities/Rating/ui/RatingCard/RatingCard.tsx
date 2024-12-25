@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './RatingCard.module.scss';
 import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/Text';
@@ -17,22 +15,24 @@ interface RatingCardProps {
     title?: string;
     feedbackTitle?: string;
     hasFeedback?: boolean;
-    onCancel?: (starsCount: Number) => void;
+    onCancel?: (starsCount: number) => void;
     onAccept?: (starsCount: number, feedback?: string) => void;
+    rate?: number
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
+    const { t } = useTranslation();
     const {
         className,
         title,
-        feedbackTitle,
+        feedbackTitle = t('Оставте отзыв'),
         hasFeedback,
         onCancel,
         onAccept,
+        rate = 0,
     } = props;
-    const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState('');
 
     const toggleModal = useCallback(() => {
@@ -61,7 +61,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
     const modalContent = (
         <VStack gap="32">
             <Text title={feedbackTitle} />
-            <Input placeholder={t('Ваш отзыв')} />
+            <Input placeholder={t('Ваш отзыв')} onChange={setFeedback} />
             <HStack gap="16" justify="end">
                 <Button theme={ButtonTheme.OUTLINERED} onClick={cancelHandle}>
                     {t('Закрыть')}
@@ -74,10 +74,10 @@ export const RatingCard = memo((props: RatingCardProps) => {
     );
 
     return (
-        <Card className={classNames(cls.RatingCard, {}, [className])}>
+        <Card className={className} max>
             <VStack gap="8">
                 <Text title={title} />
-                <StarRating size={40} onSelect={onSelectStars} />
+                <StarRating selectedStars={starsCount} size={40} onSelect={onSelectStars} />
             </VStack>
             <BrowserView><Modal isOpen={isModalOpen} lazy>{modalContent}</Modal></BrowserView>
             <MobileView><Drawer isOpen={isModalOpen} lazy onClose={cancelHandle}>{modalContent}</Drawer></MobileView>
