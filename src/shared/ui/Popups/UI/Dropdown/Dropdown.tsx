@@ -37,7 +37,6 @@ export function Dropdown(props: DropdownProps) {
                 {items.map((item) => {
                     const content = ({ active }: {active: boolean}) => (
                         <button
-                            key={String(item.content)}
                             disabled={item.disabled}
                             className={classNames(common.option, { [common.active]: active }, [cls.option])}
                             onClick={item.onClick}
