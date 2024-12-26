@@ -1,6 +1,5 @@
 import React, { ErrorInfo, ReactNode, Suspense } from 'react';
 import { PageError } from '@/widgets/PageError';
-import PageLoader from '@/widgets/PageLoader/PageLoader';
 
 interface ErrorBoundaryProps {
     children: ReactNode
@@ -17,7 +16,7 @@ class ErrorBoundary
         this.state = { hasError: false };
     }
 
-    static getDerivedStateFromError(error: Error) {
+    static getDerivedStateFromError() {
         return { hasError: true };
     }
 

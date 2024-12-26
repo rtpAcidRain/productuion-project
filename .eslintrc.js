@@ -70,6 +70,8 @@ module.exports = {
         'no-undef': 'off',
         'no-array-index-key': 'off',
         'acid-plugin2/path-checker': ['error', { alias: '@' }],
+        'acid-plugin2/public-api-imports': ['error', { alias: '@' }],
+
     },
     globals: {
         __IS_DEV__: true,
