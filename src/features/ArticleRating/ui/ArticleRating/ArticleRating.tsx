@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { RatingCard } from '@/entities/Rating';
 import { useGetArticleRating, usSetArticleRating } from '../../api/articleRatingApi';
 import { getUserAuthData } from '@/entities/User';
 import { Sceleton } from '@/shared/ui/Sceleton/Sceleton';
+import { RatingCard } from '@/entities/Rating';
 
 export interface ArticleRatingProps {
     className?: string;

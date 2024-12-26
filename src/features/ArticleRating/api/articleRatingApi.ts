@@ -1,5 +1,5 @@
-import { Rating } from '@/features/ArticleRating';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { Rating } from '../model/types/type';
 
 interface GetArticleArg { userId: string, articleId: string }
 

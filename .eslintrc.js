@@ -69,7 +69,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'no-array-index-key': 'off',
-        'acid-plugin2/path-checker': 'error',
+        'acid-plugin2/path-checker': ['error', { alias: '@' }],
     },
     globals: {
         __IS_DEV__: true,
