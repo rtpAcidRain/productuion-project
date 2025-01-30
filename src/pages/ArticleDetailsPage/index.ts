@@ -1,4 +1,3 @@
-export { articleDetailsPageReducer } from './model/slices';
 export {
 
     ArticleDetailsPageAsync as ArticleDetailsPage,
