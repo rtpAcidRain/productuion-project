@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetArticleRating, usSetArticleRating } from '../../api/articleRatingApi';
 import { getUserAuthData } from '@/entities/User';
-import { Sceleton } from '@/shared/ui/Sceleton/Sceleton';
+import { Sceleton } from '@/shared/ui/Sceleton';
 import { RatingCard } from '@/entities/Rating';
 
 export interface ArticleRatingProps {

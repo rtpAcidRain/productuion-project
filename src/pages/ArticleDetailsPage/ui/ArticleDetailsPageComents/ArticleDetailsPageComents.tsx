@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Suspense, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Text, TextSize } from '@/shared/ui/Text/Text';
+import { Text, TextSize } from '@/shared/ui/Text';
 import { VStack } from '@/shared/ui/Stack';
 import { AddNewComment } from '@/features/AddNewComment';
 import { CommentList } from '@/entities/Comment';

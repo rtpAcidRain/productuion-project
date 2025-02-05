@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/Stack';
-import { Sceleton } from '@/shared/ui/Sceleton/Sceleton';
-import { Text } from '@/shared/ui/Text/Text';
+import { Sceleton } from '@/shared/ui/Sceleton';
+import { Text } from '@/shared/ui/Text';
 import { useNotifications } from '../../api/notificationApi';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 
