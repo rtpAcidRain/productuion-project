@@ -1,7 +1,6 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
-import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -15,6 +14,7 @@ import {
 } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
+import { getRouteArticle } from '@/shared/const/router';
 
 interface ArticleListItemProps {
     className?: string,
@@ -58,7 +58,7 @@ export const ArticleListItem = memo(
                             <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                         )}
                         <div className={cls.footer}>
-                            <AppLink to={RoutePath.article_details + article.id} target={target}>
+                            <AppLink to={getRouteArticle(article.id)} target={target}>
                                 <Button theme={ButtonTheme.OUTLINE}>
                                     {t('Читать далее...')}
                                 </Button>
@@ -72,7 +72,7 @@ export const ArticleListItem = memo(
 
         return (
             <AppLink
-                to={RoutePath.article_details + article.id}
+                to={getRouteArticle(article.id)}
                 target={target}
                 className={
                     classNames(

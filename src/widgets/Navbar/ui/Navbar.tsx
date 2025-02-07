@@ -7,13 +7,13 @@ import {
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { NotificationPopup } from '@/features/notificationPopup';
-import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import cls from './Navbar.module.scss';
+import { getRouteArticleNew } from '@/shared/const/router';
 
 interface NavbarProps {
     className?: string;
@@ -32,7 +32,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
                 <Text className={cls.appName} theme={TextTheme.INVERTED} title={t('Acid App')} />
-                <AppLink theme={AppLinkTheme.SECONDARY} to={RoutePath.article_create} className={cls.createBtn}>
+                <AppLink theme={AppLinkTheme.SECONDARY} to={getRouteArticleNew()} className={cls.createBtn}>
                     {t('Создать статью')}
                 </AppLink>
                 <HStack gap="16" className={cls.actions} max={false}>
@@ -52,7 +52,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             >
                 {t('Войти')}
             </Button>
-            { isAuthModal && (
+            {isAuthModal && (
                 <LoginModal
                     isOpen={isAuthModal}
                     onClose={onToggleModal}

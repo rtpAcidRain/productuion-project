@@ -2,9 +2,9 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { UserRole, getUserAuthData, getUserRoles } from '@/entities/User';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteMain, getRouteNotFound } from '@/shared/const/router';
 
-interface RequireAuthProps {children: JSX.Element, roles?: UserRole[]}
+interface RequireAuthProps { children: JSX.Element, roles?: UserRole[] }
 
 export function RequireAuth({ children, roles }: RequireAuthProps) {
     const auth = useSelector(getUserAuthData);
@@ -23,11 +23,11 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
     }, [roles, userRoles]);
 
     if (!auth) {
-        return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+        return <Navigate to={getRouteMain()} state={{ from: location }} replace />;
     }
 
     if (!hasReuiredRoles) {
-        return <Navigate to={RoutePath.not_found} state={{ from: location }} replace />;
+        return <Navigate to={getRouteNotFound()} state={{ from: location }} replace />;
     }
 
     return children;
