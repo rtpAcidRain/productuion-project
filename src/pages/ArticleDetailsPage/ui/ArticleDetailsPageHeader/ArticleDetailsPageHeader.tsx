@@ -23,7 +23,7 @@ export const ArticleDetailsPageHeader = memo(
             if (article) {
                 navigate(getRouteArticleEdit(article.id));
             }
-        }, [navigate, article?.id]);
+        }, [article, navigate]);
 
         const onBackToList = useCallback(() => {
             navigate(getRouteArticles());

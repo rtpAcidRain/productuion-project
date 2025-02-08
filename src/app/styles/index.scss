@@ -18,7 +18,7 @@
 .content-page {
     display: flex;
 
-    &>*:last-child {
+    & > *:last-child {
         flex-grow: 1;
     }
 }

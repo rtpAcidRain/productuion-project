@@ -7,6 +7,3 @@ export {
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
 export { getArticleDetailsData } from './model/selectors/articleDetails';
 export { ArticleList } from './ui/ArticleList/ArticleList';
-export { ArticleViewToggler } from './ui/ArticleViewToggler/ArticleViewToggler';
-export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelector';
-export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';
