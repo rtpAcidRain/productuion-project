@@ -22,6 +22,7 @@ module.exports = {
         'unused-imports',
     ],
     rules: {
+        'linebreak-style': 0,
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         indent: [2, 4],
