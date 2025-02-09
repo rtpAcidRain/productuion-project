@@ -3,8 +3,9 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Page.module.scss';
+import { TestProps } from '@/shared/types/tests';
 
-interface PageProps {
+interface PageProps extends TestProps{
     className?: string,
     children: ReactNode;
     innerRef?: MutableRefObject<HTMLElement>
@@ -18,6 +19,7 @@ export const Page = memo(
             <section
                 ref={innerRef}
                 className={classNames(cls.Page, {}, [className])}
+                data-testid={props['data-testid'] ?? 'Page'}
             >
                 {children}
             </section>
