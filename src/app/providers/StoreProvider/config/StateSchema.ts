@@ -3,7 +3,6 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from '@/entities/Article';
-import { CounterSchema } from '@/entities/Counter';
 import { ProfileSchema } from '@/features/editableProfileCard';
 import { UserSchema } from '@/entities/User';
 import { AddNewCommentSchema } from '@/features/AddNewComment';
@@ -16,7 +15,6 @@ import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 export interface StateSchema {
-    counter: CounterSchema;
     user: UserSchema,
     ui: UISchema
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
