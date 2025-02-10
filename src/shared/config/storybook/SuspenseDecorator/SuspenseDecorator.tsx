@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 import { Suspense } from 'react';
 
-export const Suspenseecorator = (StoryCoomponent: Story) => (
+export const SuspenseDecorator = (StoryCoomponent: Story) => (
     <Suspense>
         <StoryCoomponent />
     </Suspense>
