@@ -34,7 +34,7 @@ export const ArticleDetailsPageComents = memo(
         });
 
         return (
-            <VStack gap="16" align="start">
+            <VStack gap="16" align="start" data-testid="ArticleDetailsPageComents">
                 <Text size={TextSize.L} title={t('Комментарии')} />
                 <VStack gap="16">
                     <Suspense fallback={`${t('Loading...')}`}>

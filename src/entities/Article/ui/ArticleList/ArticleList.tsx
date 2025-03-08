@@ -47,7 +47,10 @@ export const ArticleList = memo(
 
         if (!isLoading && !articles.length) {
             return (
-                <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+                <div
+                    data-testid="ArticleList.NotFound"
+                    className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+                >
                     <Text size={TextSize.L} title={t('Статьи не найдены')} />
                 </div>
             );
@@ -55,7 +58,10 @@ export const ArticleList = memo(
 
         return (
 
-            <div className={classNames(cls.ArticleList, { [cls.grid]: !isNormalazed }, [className, cls[view]])}>
+            <div
+                data-testid="ArticleList.SuccessLoaded"
+                className={classNames(cls.ArticleList, { [cls.grid]: !isNormalazed }, [className, cls[view]])}
+            >
                 {isNormalazed
                     && (view === ArticleVew.BIG ? (
                         <Virtuoso

@@ -45,7 +45,7 @@ export const StarRating = memo(
         };
 
         return (
-            <div className={classNames('', { [cls.disabled]: isSelected }, [className])}>
+            <div className={classNames('', { [cls.disabled]: isSelected }, [className])} data-testid="StarRating">
                 {stars.map(
                     (starNumber) => (
                         <Icon
@@ -61,6 +61,9 @@ export const StarRating = memo(
                             onMouseLeave={onLeave}
                             onMouseEnter={onHover(starNumber)}
                             onClick={onClick(starNumber)}
+                            data-testid={`StarRating.${starNumber}`}
+                            data-selected={currendStarCount >= starNumber}
+
                         />
                     ),
                 )}

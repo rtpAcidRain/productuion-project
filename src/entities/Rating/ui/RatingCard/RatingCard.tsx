@@ -59,14 +59,14 @@ export const RatingCard = memo((props: RatingCardProps) => {
     }, [onCancel, starsCount, toggleModal]);
 
     const modalContent = (
-        <VStack gap="32">
+        <VStack gap="32" data-testid="RatingCard">
             <Text title={feedbackTitle} />
-            <Input placeholder={t('Ваш отзыв')} onChange={setFeedback} />
+            <Input placeholder={t('Ваш отзыв')} onChange={setFeedback} data-testid="RatingCard.Input" />
             <HStack gap="16" justify="end">
-                <Button theme={ButtonTheme.OUTLINERED} onClick={cancelHandle}>
+                <Button theme={ButtonTheme.OUTLINERED} onClick={cancelHandle} data-testid="RatingCard.Close">
                     {t('Закрыть')}
                 </Button>
-                <Button onClick={acceptHandle}>
+                <Button onClick={acceptHandle} data-testid="RatingCard.Send">
                     {t('Отправить')}
                 </Button>
             </HStack>

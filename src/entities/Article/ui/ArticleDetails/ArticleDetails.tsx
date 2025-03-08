@@ -78,6 +78,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     if (error) {
         content = (
             <Text
+                data-testid="ArticleDetails.Error"
                 align={TextAlign.CENTER}
                 title={t('Произошла ошибка при загрузке статьи.')}
             />
@@ -86,7 +87,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     if (article) {
         content = (
-            <div>
+            <div data-testid="ArticleDetails.Success">
                 <HStack justify="center">
                     <Avatar
                         size={200}

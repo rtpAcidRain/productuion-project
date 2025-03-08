@@ -21,6 +21,7 @@ module.exports = {
         'acid-plugin2',
         'unused-imports',
     ],
+    ignorePatterns: ['cypres/**/*'],
     rules: {
         'linebreak-style': 0,
         'react/jsx-indent': [2, 4],
@@ -105,6 +106,14 @@ module.exports = {
             rules: {
                 'max-len': 'off',
                 'i18next/no-literal-string': 'off',
+            },
+        },
+        {
+            files: ['cypress/**/*'],
+            rules: {
+                'acid-plugin2/path-checker': 'off',
+                'acid-plugin2/public-api-imports': 'off',
+                'acid-plugin2/layers-import': 'off',
             },
         },
     ],
