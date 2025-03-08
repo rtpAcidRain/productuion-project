@@ -42,6 +42,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div>
                 <Page
+                    data-testid="ArticlesPage"
                     innerRef={pageWrapperRef}
                     className={classNames('', {}, [className])}
                 >
