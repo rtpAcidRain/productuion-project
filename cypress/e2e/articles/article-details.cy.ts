@@ -31,4 +31,11 @@ describe('Article Details Page Visit', () => {
         cy.setRate(5, 'feedback');
         cy.get('[data-selected=true]').should('have.length', 5);
     });
+    it('User set rating on fixtures', () => {
+        cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
+        cy.getByTestId('ArticleDetails.Success').should('exist');
+        cy.getByTestId('StarRating').scrollIntoView();
+        cy.setRate(5, 'feedback');
+        cy.get('[data-selected=true]').should('have.length', 5);
+    });
 });
