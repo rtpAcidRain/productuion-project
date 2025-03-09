@@ -5,26 +5,49 @@ import { MemoryRouter } from 'react-router-dom';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import i18nForTests from '@/shared/config/i18n/i18nForTests';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+// eslint-disable-next-line acid-plugin2/layers-import
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
+// eslint-disable-next-line acid-plugin2/layers-import
+import '@/app/styles/index.scss';
+import { Theme } from '@/shared/const/theme';
 
 export interface ComponentRenderOptions {
     route?: string;
     initialState?: DeepPartial<StateSchema>;
-    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
+    theme?: Theme
 }
-export function componentRender(component: ReactNode, options: ComponentRenderOptions = {}) {
+
+interface TestproviderProps {
+    children: ReactNode;
+    options?: ComponentRenderOptions
+}
+
+export function TestProvider(props: TestproviderProps) {
+    const { children, options = {} } = props;
+
     const {
-        route = '/',
-        initialState,
-        asyncReducers,
+        route = '/', asyncReducers, initialState, theme = Theme.LIGHT,
     } = options;
-    return render(
+
+    return (
         <MemoryRouter initialEntries={[route]}>
             <StoreProvider asyncReducers={asyncReducers} initialState={initialState as StateSchema}>
                 <I18nextProvider i18n={i18nForTests}>
-                    {component}
+                    <ThemeProvider initialTheme={theme}>
+                        <div className={`app ${theme}`}>
+                            {children}
+                        </div>
+                    </ThemeProvider>
                 </I18nextProvider>
             </StoreProvider>
         </MemoryRouter>
-        ,
+    );
+}
+export function componentRender(component: ReactNode, options: ComponentRenderOptions = {}) {
+    return render(
+        <TestProvider options={options}>
+            {component}
+        </TestProvider>,
     );
 }
